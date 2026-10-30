@@ -1,0 +1,109 @@
+.locations {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3.7rem;
+    width: 100%;
+    height: auto;
+    padding: 1em 4em;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.first,
+.second,
+.third {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 282px;
+    border-radius: 15px;
+    padding: 0 2.2em;
+    overflow: hidden;
+}
+
+.first::before,
+.second::before,
+.third::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--img);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: filter 0.4s ease, transform 0.4s ease;
+    z-index: 0;
+}
+
+.first::after,
+.second::after,
+.third::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.first { --img: url('../assets/Mexico.webp'); }
+
+.second { 
+    --img: url('../assets/Tokio.webp'); 
+    margin-top: 3em;
+}
+
+.third { --img: url('../assets/Canada.webp'); }
+
+.first:hover::before,
+.second:hover::before,
+.third:hover::before {
+    filter: blur(4px);
+    transform: scale(1.1);
+}
+
+.first:hover::after,
+.second:hover::after,
+.third:hover::after { opacity: 1; }
+
+.city,
+.street {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.first:hover .city,
+.first:hover .street,
+.second:hover .city,
+.second:hover .street,
+.third:hover .city,
+.third:hover .street {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.city { 
+    font-size: 4.2rem; 
+    font-weight: 400;
+    font-family: var(--font-secondary);
+    line-height: 1.1em;
+}
+
+.first:hover .city,
+.second:hover .city,
+.third:hover .city { transition-delay: 0.1s; }
+
+.street { font-size: 0.9rem; }
+
+.first:hover .street,
+.second:hover .street,
+.third:hover .street { transition-delay: 0.2s; }

@@ -1,0 +1,21 @@
+.menu-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.menu-name,
+.menu-description { color: var(--white); }
+
+.menu-name {
+    font-size: 4.5rem;
+    font-weight: 400;
+    font-family: var(--font-secondary);
+}
+
+.menu-name span { color: var(--light-red); }
+
+.menu-description { font-size: 1.2rem; }
