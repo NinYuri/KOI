@@ -1,0 +1,90 @@
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+/* ---------- Contact Bar ---------- */
+.topbar {
+    background-color: var(--background);
+    color: var(--white);
+    font-size: 0.95rem;
+    padding: 0.8rem 3.5rem;
+}
+
+.topbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar-contact {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    height: 80px;
+    background-color: var(--gray-white);
+}
+
+.navbar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 3.5rem;
+}
+
+.navbar-container::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 18px;
+    transform: translateY(-50%);
+    background-color: var(--medium-red);
+    z-index: 0;
+}
+
+.navbar-brand,
+.navbar-menu a {
+    position: relative;
+    z-index: 1;
+    background-color: var(--gray-white);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 95%;
+    padding: 0 1.5rem;
+    cursor: pointer;
+}
+
+.navbar-brand img {
+    width: auto;
+    height: 100%;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--black);
+    font-size: 1.2rem;
+}
+
+.navbar-menu a {
+    padding: 0.4rem 1.2rem;
+}
+
+.link-active {
+    font-weight: 600;
+    border-bottom: 2px solid var(--medium-red);
+}
