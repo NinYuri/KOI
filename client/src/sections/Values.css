@@ -1,0 +1,31 @@
+.values-section { 
+    margin: 5rem 0;
+    overflow-x: clip;
+    overflow-y: visible; 
+}
+
+.hand-doodle {
+    position: absolute;
+    top: -75%;
+    right: -19%;
+}
+
+.decorator {
+    position: absolute;
+    top: 0;
+    left: 46%;
+    font-size: 1rem;
+    color: var(--cream);
+    font-weight: 600;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 0.8rem;
+    padding: 0 1.5em;
+}
+
+.features-grid > * { flex: 0 0 calc((100% - 4 * 3rem) / 4); }

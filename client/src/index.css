@@ -10,7 +10,9 @@
   --medium-red: #760F0F;
   --light-red: #A93231;
   --cream: #E8B97B;
+  --dark-cream: #8A6D48;
   --gray-white: #CCCCCC;
+  --gray: #9E9E9E;
   --white: #FFFFFF;
   --black: #000000;
 
@@ -64,4 +66,27 @@ body {
 
 
 /* ---------- REUSABLE ---------- */
-section { background-color: var(--background); }
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  background-color: var(--background);
+}
+
+.section-name,
+.section-description { color: var(--white); }
+
+.section-name {
+  font-size: 4.5rem;
+  font-weight: 400;
+  font-family: var(--font-secondary);
+}
+
+.section-name span { color: var(--light-red); }
+
+.section-description { 
+  font-size: 1.2rem; 
+  margin-bottom: 2.5em;
+}

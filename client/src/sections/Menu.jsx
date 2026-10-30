@@ -1,5 +1,6 @@
 import { useState, useRef, useLayoutEffect } from 'react';
 import DishCard from '../components/DishCard.jsx';
+import doodle from '../assets/FirstDoodle.webp';
 import springRolls from '../assets/SpringRolls.png';
 import './Menu.css';
 
@@ -69,9 +70,12 @@ function Menu() {
     const isHovering = hovered !== null && hovered !== active;
 
     return (
-        <section className="menu-section">
-            <h1 className="menu-name">Nuestro <span>Menú</span></h1>
-            <p className="menu-description">Explora nuestros rolls, nigiri y creaciones especiales. Encuentra tu próximo favorito.</p>
+        <section className="menu-section section">
+            <img className="doodle left" src={doodle} alt="Sushi Doodle" />
+            <img className="doodle right" src={doodle} alt="Sushi Doodle" />
+
+            <h1 className="section-name">Nuestro <span>Menú</span></h1>
+            <p className="section-description">Explora nuestros rolls, nigiri y creaciones especiales. Encuentra tu próximo favorito.</p>
         
             <div className="categories" onMouseLeave={() => setHovered(null)}>
                 {/* Hover Pill */}

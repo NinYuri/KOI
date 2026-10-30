@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import Locations from './sections/Locations';
 import Menu from './sections/Menu';
+import Values from './sections/Values';
 
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <Locations />
       <Menu />
+      <Values />
       
     </main>
   )
