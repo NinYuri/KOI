@@ -1,7 +1,7 @@
 /* ==============================
    KOI - GLOBAL STYLES
 ================================ */
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer+SC&family=Inclusive+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer+SC&family=Inconsolata:wght@400;500;600;700&family=Inclusive+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* Colors */
@@ -14,9 +14,18 @@
   --white: #FFFFFF;
   --black: #000000;
 
+  /* Radial */
+  --back-radial: radial-gradient(
+    circle,
+    #2B2B2B 10%,
+    #212221 20%,
+    #0F1110 50%
+  );
+
   /* Fonts */
   --font-primary: 'Inclusive Sans', sans-serif;
   --font-secondary: 'IM Fell Great Primer SC', serif;
+  --font-card: 'Inconsolata', monospace;
 }
 
 
