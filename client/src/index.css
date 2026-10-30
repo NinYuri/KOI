@@ -19,7 +19,8 @@
   --font-secondary: 'IM Fell Great Primer SC', serif;
 }
 
-/* RESET */
+
+/* ---------- RESET ---------- */
 html { scroll-behavior: smooth; }
 
 * {

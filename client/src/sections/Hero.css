@@ -1,0 +1,82 @@
+.hero {
+    position: relative;
+    z-index: 2;
+    min-height: calc(100vh - 110px);
+    margin-top: 110px;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    min-height: inherit;
+}
+
+
+/* ---------- IZQUIERDA ---------- */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    line-height: 0.9;
+}
+
+.first-title { font-size: clamp(3rem, 7.5vw, 6rem); }
+
+.second-title {
+    align-self: flex-end;
+    font-size: clamp(2rem, 5.2vw, 6rem);
+}
+
+.hero-title em {
+    font-style: normal;
+    color: var(--light-red);
+}
+
+.hero-description {
+    margin: 4rem 0 3rem 0;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 0 4rem;
+}
+
+.hero-button {
+    align-self: center;
+    padding: 0.7rem 2.5rem;
+    border: 2px solid var(--gray-white);
+    border-radius: 999px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--gray-white);
+    background-color: transparent;
+    box-shadow: inset 0 0 0 0 var(--gray-white);
+    transition: ease-out 0.5s;
+}
+
+.hero-button:hover {
+    color: var(--black);
+    box-shadow: inset 0 -100px 0 0 var(--gray-white);
+}
+
+.hero-button:active { transform: scale(0.9); }
+
+
+/* ---------- DERECHA ---------- */
+.hero-image { position: relative; }
+
+.hero-image img {
+    position: absolute;
+    top: -110px;
+    right: 0;
+    height: 130%;
+    width: auto;
+    max-width: none;
+}

@@ -1,8 +1,18 @@
 import { FiClock, FiPhone, FiMail } from 'react-icons/fi';
+import { useState } from 'react';
 import logo from '../assets/Logo.webp';
 import './Navbar.css';
 
 function Navbar() {
+    const [activeLink, setActiveLink] = useState('inicio');
+
+    const links = [
+        { id: 'inicio', label: 'INICIO' },
+        { id: 'menu', label: 'MENÚ' },
+        { id: 'nosotros', label: 'NOSOTROS' },
+        { id: 'login', label: 'INICIAR SESIÓN' }
+    ];
+
     return (
         <header className="site-header">
 
@@ -30,10 +40,16 @@ function Navbar() {
                     </a>
 
                     <nav className="navbar-menu">
-                        <a href="#" className="link-active">INICIO</a>
-                        <a href="#">MENÚ</a>
-                        <a href="#">NOSOTROS</a>
-                        <a href="#">CONTACTO</a>
+                        {links.map(link => (
+                            <a
+                                key={link.id}
+                                href={`#${link.id}`}
+                                onClick={() => setActiveLink(link.id)}
+                                className={activeLink === link.id ? 'link-active' : ''}
+                            >
+                                {link.label}
+                            </a>  
+                        ))}                        
                     </nav>
                 </div>
             </div>

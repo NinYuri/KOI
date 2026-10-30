@@ -6,7 +6,8 @@
     z-index: 999;
 }
 
-/* ---------- Contact Bar ---------- */
+
+/* ---------- CONTACT BAR ---------- */
 .topbar {
     background-color: var(--background);
     color: var(--white);
@@ -20,14 +21,29 @@
     justify-content: space-between;
 }
 
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .topbar-contact {
     display: flex;
     gap: 2.5rem;
 }
 
-/* ---------- Navbar ---------- */
+.topbar-contact .topbar-item { cursor: pointer; }
+
+.topbar-contact .topbar-item:hover {
+    color: var(--cream);
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+
+/* ---------- NAVBAR ---------- */
 .navbar {
-    height: 80px;
+    height: 70px;
     background-color: var(--gray-white);
 }
 
@@ -63,7 +79,6 @@
     display: flex;
     align-items: center;
     height: 95%;
-    padding: 0 1.5rem;
     cursor: pointer;
 }
 
@@ -77,14 +92,26 @@
     align-items: center;
     gap: 1.5rem;
     color: var(--black);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
-.navbar-menu a {
-    padding: 0.4rem 1.2rem;
+.navbar-menu a { padding: 0.4rem 0.5rem; }
+
+.navbar-menu a::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--medium-red);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
 }
 
-.link-active {
-    font-weight: 600;
-    border-bottom: 2px solid var(--medium-red);
-}
+.navbar-menu a:hover::after { transform: scaleX(1); }
+
+.navbar-menu .link-active { font-weight: 600; }
+
+.navbar-menu .link-active::after { transform: scaleX(1); }
