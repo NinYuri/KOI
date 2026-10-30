@@ -3,6 +3,7 @@ import Hero from './sections/Hero';
 import Locations from './sections/Locations';
 import Menu from './sections/Menu';
 import Values from './sections/Values';
+import Reviews from './sections/Reviews';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
       <Locations />
       <Menu />
       <Values />
+      <Reviews />
       
     </main>
   )

@@ -10,6 +10,7 @@
   --medium-red: #760F0F;
   --light-red: #A93231;
   --cream: #E8B97B;
+  --yellow: #DFD275;
   --dark-cream: #8A6D48;
   --gray-white: #CCCCCC;
   --gray: #9E9E9E;
@@ -79,7 +80,7 @@ body {
 .section-description { color: var(--white); }
 
 .section-name {
-  font-size: 4.5rem;
+  font-size: 4.6rem;
   font-weight: 400;
   font-family: var(--font-secondary);
 }

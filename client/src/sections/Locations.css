@@ -10,9 +10,9 @@
     background-color: transparent;
 }
 
-.first,
-.second,
-.third {
+.locations-first,
+.locations-second,
+.locations-third {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -24,9 +24,9 @@
     overflow: hidden;
 }
 
-.first::before,
-.second::before,
-.third::before {
+.locations-first::before,
+.locations-second::before,
+.locations-third::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -38,9 +38,9 @@
     z-index: 0;
 }
 
-.first::after,
-.second::after,
-.third::after {
+.locations-first::after,
+.locations-second::after,
+.locations-third::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -50,28 +50,28 @@
     z-index: 1;
 }
 
-.first { --img: url('../assets/Mexico.webp'); }
+.locations-first { --img: url('../assets/Mexico.webp'); }
 
-.second { 
+.locations-second { 
     --img: url('../assets/Tokio.webp'); 
     margin-top: 3em;
 }
 
-.third { --img: url('../assets/Canada.webp'); }
+.locations-third { --img: url('../assets/Canada.webp'); }
 
-.first:hover::before,
-.second:hover::before,
-.third:hover::before {
+.locations-first:hover::before,
+.locations-second:hover::before,
+.locations-third:hover::before {
     filter: blur(4px);
     transform: scale(1.1);
 }
 
-.first:hover::after,
-.second:hover::after,
-.third:hover::after { opacity: 1; }
+.locations-first:hover::after,
+.locations-second:hover::after,
+.locations-third:hover::after { opacity: 1; }
 
-.city,
-.street {
+.loc-city,
+.loc-street {
     position: relative;
     z-index: 2;
     color: var(--white);
@@ -81,29 +81,29 @@
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.first:hover .city,
-.first:hover .street,
-.second:hover .city,
-.second:hover .street,
-.third:hover .city,
-.third:hover .street {
+.locations-first:hover .loc-city,
+.locations-first:hover .loc-street,
+.locations-second:hover .loc-city,
+.locations-second:hover .loc-street,
+.locations-third:hover .loc-city,
+.locations-third:hover .loc-street {
     opacity: 1;
     transform: translateY(0);
 }
 
-.city { 
+.loc-city { 
     font-size: 4.2rem; 
     font-weight: 400;
     font-family: var(--font-secondary);
     line-height: 1.1em;
 }
 
-.first:hover .city,
-.second:hover .city,
-.third:hover .city { transition-delay: 0.1s; }
+.locations-first:hover .loc-city,
+.locations-second:hover .loc-city,
+.locations-third:hover .loc-city { transition-delay: 0.1s; }
 
-.street { font-size: 0.9rem; }
+.loc-street { font-size: 1rem; }
 
-.first:hover .street,
-.second:hover .street,
-.third:hover .street { transition-delay: 0.2s; }
+.locations-first:hover .loc-street,
+.locations-second:hover .loc-street,
+.locations-third:hover .loc-street { transition-delay: 0.2s; }

@@ -47,17 +47,17 @@
     box-sizing: border-box;
 }
 
-.name {
+.dish-name {
     font-family: var(--font-card);
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--black);
 }
 
-.description {
+.dish-description {
     margin-top: 0.2rem;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     line-height: 1.3;
     color: var(--black);
 }
@@ -67,6 +67,6 @@
     padding: 0.2rem 1.5rem;
     border-radius: 999px;
     background-color: var(--dark-red);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--white);
 }

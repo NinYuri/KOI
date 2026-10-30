@@ -8,8 +8,8 @@ function FeatureCard({icon, title, text}) {
             </div>
             
             <div className="feature-body">
-                <h3 className="title">{title}</h3>
-                <p className="description">{text}</p>
+                <h3 className="feature-title">{title}</h3>
+                <p className="feature-description">{text}</p>
             </div>
         </article>
     )

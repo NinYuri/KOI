@@ -8,8 +8,8 @@ function DishCard({image, name, description, price}) {
             </div>
 
             <div className="dish-body">
-                <h3 className="name">{name}</h3>
-                <p className="description">{description}</p>
+                <h3 className="dish-name">{name}</h3>
+                <p className="dish-description">{description}</p>
                 <span className="dish-price">${price}</span>
             </div>
         </article>

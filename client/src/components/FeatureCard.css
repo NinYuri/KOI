@@ -32,7 +32,8 @@
     position: relative;
     width: 100%;
     flex: 1;
-    padding: 50px 0 1rem;
+    --pad-x: 1.5rem;
+    padding: 50px var(--pad-x) 1rem;
     border-radius: 30px;
     background-color: var(--gray-white);
     text-align: center;
@@ -40,16 +41,14 @@
     box-shadow: 14px 14px 0 var(--dark-cream);
 }
 
-.title {
-    --pad-x: 1rem;
-    padding: 0 var(--pad-x);
+.feature-title {
     font-size: 1.3rem;
     font-weight: 600;
     text-transform: uppercase;
     color: var(--dark-red);
 }
 
-.title::after {
+.feature-title::after {
     content: "";
     display: block;
     height: 1px;
@@ -57,9 +56,8 @@
     background-color: var(--gray);
 }
 
-.description {
+.feature-description {
     font-size: 0.95rem;
     line-height: 1.35;
     color: var(--black);
-    padding: 0 0.9em;
 }
