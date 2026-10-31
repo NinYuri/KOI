@@ -6,6 +6,8 @@ import Values from './sections/Values';
 import Reviews from './sections/Reviews';
 import Footer from './sections/Footer';
 
+import DishForm from './pages/DishForm';
+
 import './App.css';
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
       <Reviews />
       <Footer />
       
+      <DishForm />
     </main>
   )
 }
