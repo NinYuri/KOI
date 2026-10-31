@@ -151,7 +151,7 @@
 }
 
 /* ---------- Tablets ---------- */
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
     .topbar { 
         padding: 0.7rem 2rem;
         font-size: 0.9rem; 

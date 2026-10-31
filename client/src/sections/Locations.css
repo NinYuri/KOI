@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 282px;
+    height: 300px;
     border-radius: 15px;
     padding: 0 2.2em;
     overflow: hidden;
@@ -44,7 +44,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: 1;
@@ -107,3 +107,86 @@
 .locations-first:hover .loc-street,
 .locations-second:hover .loc-street,
 .locations-third:hover .loc-street { transition-delay: 0.2s; }
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .locations-first,
+    .locations-second,
+    .locations-third { height: 380px; }
+
+    .loc-city { font-size: 6rem; }
+
+    .loc-street { font-size: 1.4rem; }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) {
+    .locations {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        padding: 1em 2.5em;
+    }
+
+    .locations-second { margin-top: 0; }
+
+    .locations-third { translate: 50%; }
+
+    .loc-city { font-size: 4.5rem; }
+
+    .loc-street { font-size: 1.1rem; }
+}
+
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+    .locations {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1em 1.5em;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .locations-first,
+    .locations-second,
+    .locations-third { 
+        width: 90%;
+        height: 270px;
+    }
+
+    .locations-third { translate: 0%; }
+
+    .loc-street { font-size: 1.1rem; }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    .loc-city { font-size: 4rem; }
+}
+
+/* ---------- Hover en móviles ---------- */
+@media (hover: none) and (max-width: 768px) {
+    .locations-first::before,
+    .locations-second::before,
+    .locations-third::before {
+        transition: none;
+        filter: blur(4px);
+        transform: scale(1.1);
+    }
+
+    .locations-first::after,
+    .locations-second::after,
+    .locations-third::after {
+        opacity: 1;
+        transition: none;
+    }
+
+    .loc-city,
+    .loc-street {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
