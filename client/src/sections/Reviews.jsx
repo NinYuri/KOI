@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ReviewCard from '../components/ReviewCard';
 import olivia from '../assets/Olivia.jpg'
 import valeria from '../assets/Avatar.jpg'
 import camila from '../assets/Camila.jpg'
-import doodle from '../assets/ThirdDoodle.webp';
 import './Reviews.css';
 
 const reviews = [
@@ -18,6 +17,9 @@ const reviews = [
 function Reviews() {
     const [active, setActive] = useState(1)
     const total = reviews.length
+    const startX = useRef(null)
+    const startY = useRef(null)
+    const swiped = useRef(false)
 
     const getOffset = (i) => {
         let diff = i - active
@@ -26,12 +28,38 @@ function Reviews() {
         return diff
     }
 
+    const next = () => setActive((a) => (a + 1) % total)
+    const prev = () => setActive((a) => (a - 1 + total) % total)
+
+    const onPointerDown = (e) => {
+        startX.current = e.clientX
+        startY.current = e.clientY
+        swiped.current = false
+    }
+
+    const onPointerUp = (e) => {
+        if(startX.current === null) return
+        const dx = e.clientX - startX.current
+        const dy = e.clientY - startY.current
+        startX.current = null
+
+        if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+            swiped.current = true
+            dx < 0 ? next() : prev()
+        }
+    }
+
     return (
         <section className="reviews-section section">
             <h1 className="section-name">Nuestros <span>Clientes</span> Cuentan</h1>
-            <p className="section-description">Cada visita tiene una historia. Estas son algunas de las favoritas.</p>
+            <p className="section-description">Cada visita tiene una historia. Desliza para conocer nuestras favoritas.</p>
         
-            <div className="reviews-carousel">
+            <div 
+                className="reviews-carousel"
+                onPointerDown={onPointerDown}
+                onPointerUp={onPointerUp}
+                onPointerCancel={() => { startX.current = null }}
+            >
                 {reviews.map((review, i) => {
                     const offset = getOffset(i)
                     const position =
@@ -44,7 +72,10 @@ function Reviews() {
                             {...review}
                             className={position}
                             style={{ '--offset': offset }}
-                            onClick={offset !== 0 ? () => setActive(i) : undefined}
+                            onClick={offset !== 0 ? () => {
+                                if(swiped.current) return
+                                setActive(i)
+                            } : undefined}
                         />
                     )
                 })}

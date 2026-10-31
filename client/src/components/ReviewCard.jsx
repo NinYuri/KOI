@@ -27,7 +27,7 @@ function ReviewCard({image, name, comment, rating, className = '', style, onClic
                 )}
             </div>
 
-            <p className="review-comment">"{comment}"</p>
+            <p className="review-comment">“{comment}”</p>
         </article>
     )
 }

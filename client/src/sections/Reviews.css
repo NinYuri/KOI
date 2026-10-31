@@ -10,4 +10,46 @@
     position: relative;
     width: 100%;
     height: 550px;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .reviews-section { margin-bottom: 7rem; }
+
+    .reviews-carousel { 
+        --gap: 32rem; 
+        height: 600px; 
+    }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) {
+    .reviews-section { margin-bottom: 5rem; }
+
+    .reviews-carousel { 
+        --gap: 20rem; 
+        height: 500px; 
+    }
+}
+
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+    .reviews-section { margin: 5em 0 3em; }
+
+    .reviews-carousel { 
+        --gap: 15rem; 
+        height: 520px; 
+    }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    .reviews-carousel { 
+        --gap: 13rem; 
+        height: 500px; 
+    }
 }
