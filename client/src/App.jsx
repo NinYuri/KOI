@@ -4,6 +4,7 @@ import Locations from './sections/Locations';
 import Menu from './sections/Menu';
 import Values from './sections/Values';
 import Reviews from './sections/Reviews';
+import Footer from './sections/Footer';
 
 import './App.css';
 
@@ -16,6 +17,7 @@ function App() {
       <Menu />
       <Values />
       <Reviews />
+      <Footer />
       
     </main>
   )

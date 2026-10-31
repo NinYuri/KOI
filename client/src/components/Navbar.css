@@ -4,7 +4,10 @@
     left: 0;
     width: 100%;
     z-index: 999;
+    transition: transform 0.4s ease;
 }
+
+.site-header--hidden { transform: translateY(-100%); }
 
 
 /* ---------- CONTACT BAR ---------- */
@@ -115,3 +118,110 @@
 .navbar-menu .link-active { font-weight: 600; }
 
 .navbar-menu .link-active::after { transform: scaleX(1); }
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes (+1600px) ---------- */
+@media (min-width: 1600px) {
+    .topbar,
+    .navbar-container {
+        /* el contenido se queda en un ancho máximo, la línea sigue de lado a lado */
+        padding-left: calc((100% - 1500px) / 2);
+        padding-right: calc((100% - 1500px) / 2);
+    }
+
+    .navbar-menu { font-size: 1.2rem; gap: 2rem; }
+}
+
+/* ---------- Tablets (769px - 1024px) ---------- */
+@media (max-width: 1024px) {
+    .topbar { padding: 0.7rem 2rem; font-size: 0.9rem; }
+    .navbar-container { padding: 0 2rem; }
+    .navbar-menu { gap: 0.8rem; font-size: 1rem; }
+}
+
+/* ---------- Celulares y tablets chicas (hasta 768px) ---------- */
+@media (max-width: 768px) {
+    .topbar { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
+    .topbar-contact { gap: 1.5rem; }
+    .navbar-container { padding: 0 1.5rem; }
+
+    .navbar { position: relative; }
+
+    /* Botón hamburguesa (corta la línea roja igual que el logo) */
+    .navbar-toggle {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0 10px;
+        border: none;
+        background-color: var(--gray-white);
+        cursor: pointer;
+    }
+
+    .navbar-toggle span {
+        display: block;
+        height: 2px;
+        background-color: var(--black);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Hamburguesa → X */
+    .navbar-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .navbar-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Panel desplegable */
+    .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 1.5rem;
+        background-color: var(--gray-white);
+        font-size: 1.1rem;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
+
+        /* cerrado */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease, visibility 0.4s;
+    }
+
+    .navbar-menu.is-open {
+        max-height: 400px;
+        padding: 1rem 1.5rem 1.5rem;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar-menu a { padding: 0.6rem 0.5rem; }
+
+    /* el subrayado ahora mide lo mismo que el texto */
+    .navbar-menu a::after {
+        left: 0.5rem;
+        right: 0.5rem;
+    }
+}
+
+/* ---------- Celulares pequeños (hasta 480px) ---------- */
+@media (max-width: 600px) {
+    /* el horario no cabe: lo escondemos y centramos el contacto */
+    .topbar-hours { display: none; }
+    .topbar-container { justify-content: center; }
+    .topbar-contact { gap: 1rem; font-size: 0.8rem; }
+}
+
+/* Botón oculto en pantallas grandes */
+@media (min-width: 769px) {
+    .navbar-toggle { display: none; }
+}

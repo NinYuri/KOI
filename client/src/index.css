@@ -17,12 +17,20 @@
   --white: #FFFFFF;
   --black: #000000;
 
-  /* Radial */
+  /* Gradients */
   --back-radial: radial-gradient(
     circle,
     #2B2B2B 10%,
     #212221 20%,
     #0F1110 50%
+  );
+  --footer-logo: linear-gradient(
+    to right,
+    #CCCCCC 0%,
+    #9F8E8D 25%,
+    #67413F 64%,
+    #582C2A 80%,
+    #4D1D1A 100%
   );
 
   /* Fonts */
