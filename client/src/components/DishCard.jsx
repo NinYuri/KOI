@@ -10,7 +10,7 @@ function DishCard({image, name, description, price}) {
             <div className="dish-body">
                 <h3 className="dish-name">{name}</h3>
                 <p className="dish-description">{description}</p>
-                <span className="dish-price">${price}</span>
+                <span className="dish-price">${Number(price).toFixed(2)}</span>
             </div>
         </article>
     )
