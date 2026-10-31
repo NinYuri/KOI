@@ -119,36 +119,71 @@
 
 .navbar-menu .link-active::after { transform: scaleX(1); }
 
+.navbar-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+    z-index: -1;
+}
+
+.navbar-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 /* ---------- RESPONSIVE ---------- */
-/* ---------- Pantallas grandes (+1600px) ---------- */
+/* ---------- Pantallas grandes ---------- */
 @media (min-width: 1600px) {
     .topbar,
     .navbar-container {
-        /* el contenido se queda en un ancho máximo, la línea sigue de lado a lado */
         padding-left: calc((100% - 1500px) / 2);
         padding-right: calc((100% - 1500px) / 2);
     }
 
-    .navbar-menu { font-size: 1.2rem; gap: 2rem; }
+    .navbar-menu { 
+        font-size: 1.2rem; 
+        gap: 2rem; 
+    }
 }
 
-/* ---------- Tablets (769px - 1024px) ---------- */
+/* ---------- Tablets ---------- */
 @media (max-width: 1024px) {
-    .topbar { padding: 0.7rem 2rem; font-size: 0.9rem; }
+    .topbar { 
+        padding: 0.7rem 2rem;
+        font-size: 0.9rem; 
+    }
+
     .navbar-container { padding: 0 2rem; }
-    .navbar-menu { gap: 0.8rem; font-size: 1rem; }
+
+    .navbar-menu { 
+        gap: 0.8rem; 
+        font-size: 1rem; 
+    }
 }
 
-/* ---------- Celulares y tablets chicas (hasta 768px) ---------- */
+/* ---------- Celulares y tablets chicas ---------- */
 @media (max-width: 768px) {
-    .topbar { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
-    .topbar-contact { gap: 1.5rem; }
+    .topbar { 
+        padding: 0.7rem 0; 
+        font-size: 0.85rem; 
+    }
+
+    .topbar-container { 
+        flex-direction: column; 
+        gap: 0.7rem;
+    }
+
+    .topbar-contact { gap: 6rem; }
+
     .navbar-container { padding: 0 1.5rem; }
 
     .navbar { position: relative; }
 
-    /* Botón hamburguesa (corta la línea roja igual que el logo) */
+    /* Botón hamburguesa */
     .navbar-toggle {
         position: relative;
         z-index: 1;
@@ -171,7 +206,6 @@
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    /* Hamburguesa → X */
     .navbar-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .navbar-toggle.is-open span:nth-child(2) { opacity: 0; }
     .navbar-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -206,19 +240,17 @@
 
     .navbar-menu a { padding: 0.6rem 0.5rem; }
 
-    /* el subrayado ahora mide lo mismo que el texto */
     .navbar-menu a::after {
         left: 0.5rem;
         right: 0.5rem;
     }
 }
 
-/* ---------- Celulares pequeños (hasta 480px) ---------- */
-@media (max-width: 600px) {
-    /* el horario no cabe: lo escondemos y centramos el contacto */
-    .topbar-hours { display: none; }
-    .topbar-container { justify-content: center; }
-    .topbar-contact { gap: 1rem; font-size: 0.8rem; }
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 600px) {   
+    .topbar-container { font-size: 0.8rem; } 
+
+    .topbar-contact { gap: 1rem;  }
 }
 
 /* Botón oculto en pantallas grandes */

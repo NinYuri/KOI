@@ -15,6 +15,7 @@ function Navbar() {
     const [hidden, setHidden] = useState(false);
     const [open, setOpen] = useState(false);
     const lastY = useRef(0);
+    const headerRef = useRef(null);
 
     useEffect(() => {
         const onScroll = () => {
@@ -47,6 +48,18 @@ function Navbar() {
         };
     }, []);
 
+    useEffect(() => {
+        if(!open) return;
+
+        const onClickOutside = (e) => {
+            if(headerRef.current && !headerRef.current.contains(e.target))
+                setOpen(false);
+        };
+
+        document.addEventListener('pointerdown', onClickOutside);
+        return () => document.removeEventListener('pointerdown', onClickOutside);
+    }, [open]);
+
     // Close when selecting an option
     const handleLinkClick = (id) => {
         setActiveLink(id);
@@ -54,7 +67,10 @@ function Navbar() {
     };
 
     return (
-        <header className={`site-header ${hidden ? 'site-header--hidden' : ''}`}>
+        <header
+            ref={headerRef} 
+            className={`site-header ${hidden ? 'site-header--hidden' : ''}`}
+        >
 
             <div className="topbar">
                 <div className="topbar-container">
@@ -106,6 +122,12 @@ function Navbar() {
                     </nav>
                 </div>
             </div>
+
+            <div
+                className={`navbar-overlay ${open ? 'is-open' : ''}`}
+                onClick={() => setOpen(false)}
+                aria-hidden="true"
+            />
         </header>
     )
 }

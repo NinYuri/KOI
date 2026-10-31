@@ -1,6 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+
+import productRoutes from './routes/product.routes.js';
 
 const app = express();
 
@@ -11,9 +13,9 @@ app.use(express.json());
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-    res.json({
-        message: 'Welcome to KOI API!'
-    });
+    res.json({ message: 'Welcome to KOI API!' });
 });
 
-module.exports = app;
+app.use("/api/products", productRoutes);
+
+export default app;

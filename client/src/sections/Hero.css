@@ -1,8 +1,12 @@
+:root { --header-height: 110px; }
+
 .hero {
     position: relative;
     z-index: 1;
-    min-height: calc(100vh - 110px);
-    margin-top: 110px;
+    min-height: calc(100vh - var(--header-height));
+    margin-top: var(--header-height);
+    overflow-x: clip;
+    overflow-y: visible;
 }
 
 .hero-container {
@@ -74,9 +78,112 @@
 
 .hero-image img {
     position: absolute;
-    top: -110px;
+    top: calc(var(--header-height) * -1);
     right: 0;
     height: 130%;
     width: auto;
     max-width: none;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .first-title { font-size: 7.3rem; }
+
+    .second-title { font-size: 5rem; }
+
+    .hero-description { 
+        padding: 0 7rem;
+        font-size: 1.7rem; 
+        line-height: 1.5;
+    }
+
+    .hero-button { font-size: 2rem; }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) {
+    :root { --header-height: 120px; }
+
+    .hero { height: calc(100vh - var(--header-height)); }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-content {
+        padding: 3rem 1rem 2rem;
+        height: 100%;
+        margin: auto;
+        z-index: 2;
+    }
+
+    .hero-title { line-height: 1; }
+
+    .first-title { font-size: clamp(2.5rem, 11.5vw, 7rem); }
+    .second-title { font-size: clamp(1.7rem, 8vw, 5rem); }
+
+    .hero-description {
+        margin: 2rem 0 7rem;
+        padding: 0 2em;
+        font-size: 1.5rem;
+    }
+
+    .hero-button {
+        padding: 0.8rem 2.3rem;
+        font-size: 1.7rem;
+    }
+
+    .hero-image img {
+        top: calc(var(--header-height) - 105vh);
+        right: 0;
+        height: 100vh;
+        opacity: 0.2;
+        z-index: 1;
+    }
+}
+
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 3rem 1rem 2rem;
+        height: 100%;
+        margin: auto;
+        z-index: 2;
+    }
+
+    .first-title { font-size: clamp(2.5rem, 11.5vw, 5.5rem); }
+    .second-title { font-size: clamp(1.7rem, 8vw, 4rem); }
+
+    .hero-description {
+        margin: 2rem 0 7rem;
+        padding: 0 1.5rem;
+        font-size: 1.25rem;
+        line-height: 1.7;
+    }
+
+    .hero-button {
+        padding: 0.6rem 2rem;
+        font-size: 1.4rem;
+    }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    .hero-content { margin-top: auto; }
+
+    .hero-description { 
+        font-size: 1rem;
+        line-height: 1.6; 
+        margin-bottom: 4em;
+    }
+
+    .hero-button { font-size: 1.1rem; }
+
+    .hero-image img {
+        height: 95vh;
+        right: -15%;
+    }
 }
