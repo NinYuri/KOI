@@ -112,22 +112,27 @@ body {
 }
 
 /* ---------- Tablets ---------- */
-@media (max-width: 1025px) { 
+@media (max-width: 1025px) {
   .section-name { font-size: 4.8rem; }
 
   .section-description {
     line-height: 1.8;
     padding: 0 5rem;
+    font-size: 1.25rem;
   }
 }
 
 /* ---------- Celulares y tablets ---------- */
 @media (max-width: 768px) {
-  .section-name { font-size: 4.6rem; }
+  .section-name { 
+    font-size: 4.6rem;
+    line-height: 1; 
+  }
 
   .section-description {
     line-height: 1.5;
     padding: 0 2.5rem;
+    margin-top: 0.7rem;
   }
 }
 

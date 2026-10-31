@@ -135,12 +135,12 @@
     .doodle { height: 30%; }
 
     .doodle.left {
-        left: -11%;
+        left: -15%;
         transform: rotate(-8deg);
     }   
 
     .doodle.right {
-        right: -11%;
+        right: -15%;
         transform: scaleX(-1) rotate(-8deg);
     }
 
@@ -176,7 +176,7 @@
 
     .dishes-grid { padding: 0 6.5em; }
 
-    .dishes-grid > * { flex-basis: 75%; }
+    .dishes-grid > * { flex-basis: 80%; }
 }
 
 /* ---------- Celulares pequeños ---------- */

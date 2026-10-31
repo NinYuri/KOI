@@ -1,10 +1,13 @@
 .feature-card {
+    --icon-size: 90px;
+    --shadow-offset: 14px;
+
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-top: 60px;
+    padding-top: calc(var(--icon-size) * 0.66);
 }
 
 .feature-icon {
@@ -15,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90px;
+    width: var(--icon-size);
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: var(--dark-red);
@@ -33,12 +36,12 @@
     width: 100%;
     flex: 1;
     --pad-x: 1.5rem;
-    padding: 50px var(--pad-x) 1rem;
+    padding: calc(var(--icon-size) * 0.55) var(--pad-x) 1rem;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--dark-cream);
     border-radius: 30px;
     background-color: var(--gray-white);
     text-align: center;
     box-sizing: border-box;
-    box-shadow: 14px 14px 0 var(--dark-cream);
 }
 
 .feature-title {
@@ -60,4 +63,71 @@
     font-size: 0.95rem;
     line-height: 1.35;
     color: var(--black);
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .feature-card { 
+        --icon-size: 105px; 
+        --shadow-offset: 16px; 
+    }
+    
+    .feature-body { --pad-x: 2.1rem; }
+    
+    .feature-title { font-size: 1.8rem; }
+    
+    .feature-description { font-size: 1.2rem; }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) {
+    .feature-card { 
+        --icon-size: 90px; 
+        --shadow-offset: 12px; 
+    }
+
+    .feature-body { 
+        --pad-x: 1.2rem; 
+        border-radius: 26px; 
+    }
+
+    .feature-title { font-size: 1.35rem; }
+    
+    .feature-description { font-size: 1.15rem; }
+}
+
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+    .feature-card {
+        --icon-size: 100px;
+
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .feature-body {padding: calc(var(--icon-size) * 0.55) var(--pad-x) 2rem; }
+
+    .feature-title { font-size: 1.4rem; }
+
+    .feature-description { font-size: 1.2rem; }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    .feature-card {
+        --icon-size: 75px;
+        --shadow-offset: 10px;
+
+        max-width: 300px;
+        margin: 0 calc(var(--shadow-offset) + 0.5rem) 0 0.5rem;
+        width: calc(100% - var(--shadow-offset) - 1rem);
+    }
+
+    .feature-body { border-radius: 22px; }
+
+    .feature-title { font-size: 1.15rem; }
+
+    .feature-description { font-size: 1rem; }
 }

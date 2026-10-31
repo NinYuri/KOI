@@ -20,12 +20,12 @@
 }
 
 .features-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     gap: 3rem;
     margin-top: 0.8rem;
-    padding: 0 1.7em;
+    padding: 0 3em;
 }
 
 .features-grid > * { flex: 0 0 calc((100% - 4 * 3rem) / 4); }
@@ -33,13 +33,49 @@
 
 /* ---------- RESPONSIVE ---------- */
 /* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .hand-doodle { height: 145%; }
+
+    .decorator { 
+        left: 48%;
+        font-size: 1.2rem; 
+    }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) {
+    .hand-doodle { 
+        top: -45%;
+        right: -20%;
+        height: 73%;
+    }
+
+    .decorator { 
+        left: 45%;
+        font-size: 1rem; 
+    }
+
+    .features-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+}
 
 /* ---------- Celulares y tablets ---------- */
 @media (max-width: 768px) {
     .hand-doodle { display: none; }
+
+    .decorator { left: 43%; }
+
+    .features-grid { 
+        grid-template-columns: 1fr; 
+        gap: 3rem; 
+    }
 }
 
 /* ---------- Celulares pequeños ---------- */
 @media (max-width: 480px) {
-    
+    .decorator {
+        position: relative;
+        left: 0;
+        transform: translateX(0%);
+        margin-bottom: 0.9rem;
+    }
 }
