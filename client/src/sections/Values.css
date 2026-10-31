@@ -29,3 +29,17 @@
 }
 
 .features-grid > * { flex: 0 0 calc((100% - 4 * 3rem) / 4); }
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+    .hand-doodle { display: none; }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    
+}

@@ -67,6 +67,15 @@ function Menu() {
         return () => window.removeEventListener('resize', update);
     }, [active, hovered]);
 
+    const handleSelect = (i) => {
+        setActive(i);
+        optionRefs.current[i]?.scrollIntoView({
+            behavior: 'smooth',
+            inline: 'center',
+            block: 'nearest',
+        });
+    };
+
     const isHovering = hovered !== null && hovered !== active;
 
     return (
@@ -77,7 +86,10 @@ function Menu() {
             <h1 className="section-name">Nuestro <span>Menú</span></h1>
             <p className="section-description">Explora nuestros rolls, nigiri y creaciones especiales. Encuentra tu próximo favorito.</p>
         
-            <div className="categories" onMouseLeave={() => setHovered(null)}>
+            <div 
+                className="categories" 
+                onPointerLeave={(e) => e.pointerType === 'mouse' && setHovered(null)}
+            >
                 {/* Hover Pill */}
                 <span
                     className={`pill pill-hover ${isHovering ? 'visible' : ''}`}
@@ -96,8 +108,8 @@ function Menu() {
                         type="button"
                         ref={(el) => (optionRefs.current[i] = el)}
                         className={`option ${active === i ? 'active' : ''}`}
-                        onClick={() => setActive(i)}
-                        onMouseEnter={() => setHovered(i)}
+                        onClick={() => handleSelect(i)}
+                        onPointerEnter={(e) => e.pointerType === 'mouse' && setHovered(i)}
                     >
                         <p data-text={name}>{name}</p>
                     </button>

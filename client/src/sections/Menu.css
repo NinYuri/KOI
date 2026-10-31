@@ -24,7 +24,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
     font-size: 1.1rem;
     gap: 0.5em;
 }
@@ -51,6 +53,8 @@
     border-radius: 40px;
     color: var(--white);
     font: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
     cursor: pointer;
     z-index: 1;
 }
@@ -114,25 +118,93 @@
 }
 
 
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .doodle { height: 55%; }
 
+    .categories { font-size: 1.3rem; }
 
-/* Laptops pequeñas / tablets horizontales */
-@media (max-width: 1200px) {
-    .dishes-grid > * { flex-basis: calc((100% - 2 * 4rem) / 3); }
+    .more-dishes { font-size: 1.3rem; }
+
+    .more-arrow-svg { width: 7rem; }
 }
 
-/* Tablets */
-@media (max-width: 900px) {
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) {
+    .doodle { height: 30%; }
+
+    .doodle.left {
+        left: -11%;
+        transform: rotate(-8deg);
+    }   
+
+    .doodle.right {
+        right: -11%;
+        transform: scaleX(-1) rotate(-8deg);
+    }
+
+    .categories { font-size: 1.1rem; }
+
+    .dishes-grid { padding: 0 5rem; }
+    
     .dishes-grid > * { flex-basis: calc((100% - 4rem) / 2); }
+
+    .more-dishes { font-size: 1.2rem; }
+
+    .more-arrow-svg { width: 5rem; }
 }
 
-/* Celulares */
-@media (max-width: 600px) {
-    .dishes-grid > * {
-        flex-basis: 100%;
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+    .categories {
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0.3rem 1.5rem;
+        font-size: 1.15rem;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .dishes-grid {
-        padding: 0 1.5rem;
+    .categories::-webkit-scrollbar { display: none; }
+
+    .doodle { opacity: 0; }
+
+    .option { scroll-snap-align: center; }
+
+    .dishes-grid { padding: 0 6.5em; }
+
+    .dishes-grid > * { flex-basis: 75%; }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    .categories { font-size: 1.1rem; }
+
+    .doodle { 
+        opacity: 1;
+        top: -3.5%;
+        height: 11%;
     }
+
+    .doodle.left { 
+        left: -20%; 
+        transform: scaleX(-1) rotate(-10deg);
+    }
+
+    .doodle.right {
+        right: -20%;
+        transform: scaleX(1) rotate(-8deg);
+    }
+
+    .dishes-grid { 
+        padding: 0 1.5rem; 
+        gap: 2rem; 
+    }
+    
+    .dishes-grid > * { flex-basis: 75%; }
+
+    .more-dishes { font-size: 1.1rem; }
 }

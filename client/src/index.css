@@ -88,6 +88,7 @@ body {
 .section-description { color: var(--white); }
 
 .section-name {
+  text-align: center;
   font-size: 4.6rem;
   font-weight: 400;
   font-family: var(--font-secondary);
@@ -96,6 +97,50 @@ body {
 .section-name span { color: var(--light-red); }
 
 .section-description { 
+  text-align: center;
   font-size: 1.2rem; 
   margin-bottom: 2.5em;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+/* ---------- Pantallas grandes ---------- */
+@media (min-width: 1600px) {
+    .section-name { font-size: 6.5rem; }
+
+    .section-description { font-size: 1.5rem; }
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width: 1025px) { 
+  .section-name { font-size: 4.8rem; }
+
+  .section-description {
+    line-height: 1.8;
+    padding: 0 5rem;
+  }
+}
+
+/* ---------- Celulares y tablets ---------- */
+@media (max-width: 768px) {
+  .section-name { font-size: 4.6rem; }
+
+  .section-description {
+    line-height: 1.5;
+    padding: 0 2.5rem;
+  }
+}
+
+/* ---------- Celulares pequeños ---------- */
+@media (max-width: 480px) {
+    .section-name { 
+      font-size: 4.3rem;
+      padding: 0 0.5rem; 
+    }
+
+    .section-description {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      padding: 0 2em;
+    }
 }
