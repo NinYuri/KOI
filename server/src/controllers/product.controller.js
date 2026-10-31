@@ -1,7 +1,7 @@
 import { prisma } from "../config/prisma.js";
 
 // GET: Obtener productos por categoría y página
-export const getProducts = async (req, res) => {
+export const getProducts = async(req, res) => {
     try {
         const category = req.query.category || "Entradas";
         const page = Math.max(1, parseInt(req.query.page, 10) || 1);
@@ -13,13 +13,11 @@ export const getProducts = async (req, res) => {
             )
         `;
 
-        // La función devuelve una fila especial cuando la categoría no existe
-        if (products.length > 0 && products[0].product_id === null) {
+        if(products.length > 0 && products[0].product_id === null) {
             const message = products[0].mensaje;
 
-            if (message?.includes("categoría")) {
+            if(message?.includes("categoría"))
                 return res.status(404).json({ message });
-            }
 
             return res.status(200).json({
                 message,
@@ -39,17 +37,14 @@ export const getProducts = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Error retrieving products:", error);
-
-        return res.status(500).json({
-            message: "Error retrieving products",
-        });
+        console.error("Error al obtener productos: ", error);
+        return res.status(500).json({ message: "Error al obtener productos" });
     }
 };
 
 
 // POST: Crear un producto
-export const createProduct = async (req, res) => {
+export const createProduct = async(req, res) => {
     try {
         const {
             category,
@@ -59,11 +54,8 @@ export const createProduct = async (req, res) => {
         } = req.body;
 
         // Validar que se haya enviado una imagen
-        if (!req.file) {
-            return res.status(400).json({
-                message: "Product image is required",
-            });
-        }
+        if(!req.file)
+            return res.status(400).json({ message: "Por favor, seleccione la imagen del platillo." });
 
         const imageUrl = req.file.path;
 
@@ -79,34 +71,24 @@ export const createProduct = async (req, res) => {
 
         const { mensaje, success } = result[0];
 
-        if (!success) {
+        if(!success)
             return res.status(400).json({ message: mensaje });
-        }
 
-        return res.status(201).json({
-            message: mensaje,
-        });
-
+        return res.status(201).json({ message: mensaje });
     } catch (error) {
-        console.error("Error creating product:", error);
-
-        return res.status(500).json({
-            message: "Error creating product",
-        });
+        console.error("Error al crear el nuevo platillo: ", error);
+        return res.status(500).json({ message: "Error al crear el nuevo platillo." });
     }
 };
 
 
 // PUT: Actualizar un producto
-export const updateProduct = async (req, res) => {
+export const updateProduct = async(req, res) => {
     try {
         const productId = Number(req.params.id);
 
-        if (!Number.isInteger(productId) || productId <= 0) {
-            return res.status(400).json({
-                message: "Invalid product ID",
-            });
-        }
+        if(!Number.isInteger(productId) || productId <= 0)
+            return res.status(400).json({ message: "El ID del platillo ingresado no es válido." });
 
         const {
             category,
@@ -116,7 +98,6 @@ export const updateProduct = async (req, res) => {
             is_available,
         } = req.body;
 
-        // Si no se envía una imagen, conservamos la actual
         const imageUrl = req.file?.path ?? null;
 
         const parsedPrice =
@@ -143,64 +124,38 @@ export const updateProduct = async (req, res) => {
 
         const { mensaje, success } = result[0];
 
-        if (!success) {
+        if(!success)
             return res.status(400).json({ message: mensaje });
-        }
 
-        return res.status(200).json({
-            message: mensaje,
-        });
-
+        return res.status(200).json({ message: mensaje });
     } catch (error) {
-        console.error("Error updating product:", error);
-
-        return res.status(500).json({
-            message: "Error updating product",
-        });
+        console.error("Error al actualizar el platillo: ", error);
+        return res.status(500).json({ message: "Error al actualizar el platillo" });
     }
 };
 
 
-// DELETE: Desactivar un producto (soft delete)
+// DELETE: Eliminar un producto
 export const deleteProduct = async (req, res) => {
     try {
         const productId = Number(req.params.id);
 
-        if (!Number.isInteger(productId) || productId <= 0) {
-            return res.status(400).json({
-                message: "Invalid product ID",
-            });
+        if(!Number.isInteger(productId) || productId <= 0) {
+            return res.status(400).json({ message: "El ID del platillo ingresado no es válido." });
         }
 
-        // Reutilizamos sp_update_product para cambiar is_available
         const result = await prisma.$queryRaw`
-            SELECT * FROM sp_update_product(
-                ${productId},
-                CAST(NULL AS VARCHAR(100)),
-                CAST(NULL AS VARCHAR(100)),
-                CAST(NULL AS VARCHAR(200)),
-                CAST(NULL AS DECIMAL(10, 2)),
-                CAST(NULL AS VARCHAR(300)),
-                FALSE
-            )
+            SELECT * FROM sp_delete_product( ${productId} )
         `;
 
         const { mensaje, success } = result[0];
 
-        if (!success) {
+        if(!success)
             return res.status(400).json({ message: mensaje });
-        }
-
-        return res.status(200).json({
-            message: "Product successfully deactivated",
-            details: mensaje,
-        });
-
+        
+        return res.status(200).json({ message: mensaje });
     } catch (error) {
-        console.error("Error deactivating product:", error);
-
-        return res.status(500).json({
-            message: "Error deactivating product",
-        });
+        console.error("Error al eliminar el platillo: ", error);
+        return res.status(500).json({ message: "Error al eliminar el platillo." });
     }
 };
