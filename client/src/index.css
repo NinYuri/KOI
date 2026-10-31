@@ -26,10 +26,18 @@
   );
   --footer-logo: linear-gradient(
     to right,
-    #CCCCCC 0%,
-    #9F8E8D 25%,
-    #67413F 64%,
-    #582C2A 80%,
+    #CCCCCC -5%,
+    #9F8E8D 5%,
+    #67413F 31%,
+    #582C2A 40%,
+    #4D1D1A 100%
+  );
+  --footer-mobile: linear-gradient(
+    to bottom,
+    #CCCCCC -5%,
+    #9F8E8D 10%,
+    #67413F 32%,
+    #582C2A 45%,
     #4D1D1A 100%
   );
 
